@@ -3,10 +3,16 @@ body {
 }
 table {
 	border-collapse: collapse;
+	text-align: left;
 }
 table td,table th {
-	width:200px;
 	border:1px solid #ccc;
+}
+#todo th {
+    width: 165px;
+}
+#staff th {
+	width:132px;
 }
 .alternate {
 	background-color: #ddd;
