@@ -25,11 +25,13 @@ function makeTableSortable(table) {
 
 function sortTable(table, tableIndex) {
 	var tableHead = table.tHead.rows[0].cells;		//获取待排序table的所有th
-	var tableRows = new Array();
-	for (var i = 0; i < table.tBodies[0].rows.length; i++) {
+	for (var i = 0; i < tableHead.length; i++)
 		tableHead[i].className = '';		//重置所有th的高亮以及箭头样式
+
+	var tableRows = new Array();
+	for (var i = 0; i < table.tBodies[0].rows.length; i++)
 		tableRows[i] = table.tBodies[0].rows[i];		//新开一个数组装载待排序table的row
-	}
+
 	if (table.sortedIndex == tableIndex) {		//如果当前点击的列和上一次相同
 		tableRows.reverse();		//直接把数组颠倒顺序
 		if (table.sortedAscend) {
@@ -45,12 +47,14 @@ function sortTable(table, tableIndex) {
 		tableRows.sort(cmp(tableIndex));		//调用自定义的cmp方法进行排序
 		table.sortedAscend = true;
 	}
+
 	var frag = document.createDocumentFragment();
 	for (var i = 0; i < tableRows.length; i++) {
 		if (i%2) tableRows[i].className = 'alternate';		//对偶数行设置灰色背景颜色
 		else tableRows[i].className = '';
 		frag.appendChild(tableRows[i]);
 	}
+
 	table.tBodies[0].appendChild(frag);
 	console.log(tableRows);		//调试使用
 	table.sortedIndex = tableIndex;
