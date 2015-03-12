@@ -105,3 +105,4 @@ function swapRow(a, b, table) {
 	rows[a].innerHTML = rows[b].innerHTML;
 	rows[b].innerHTML = temp;
 }
+
