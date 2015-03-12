@@ -1,0 +1,35 @@
+body{
+	font-family: "Microsoft YaHei";
+}
+h1{
+	font-size: 24px;
+}
+h2{
+	font-size: 24px;
+}
+table{
+	text-align: left;
+	border-collapse:collapse;
+}  
+
+table th,table td{
+	border:1px solid gray;
+}
+th{
+	color:white;
+	background-color: #031B7F;
+	font-style:bold;
+}
+.thup{
+	background-image: url("ascend.png");
+	background-repeat: no-repeat;
+	background-position: right;
+}
+.thdown{
+	background-image: url("descend.png");
+	background-repeat: no-repeat;
+	background-position: right;
+}
+#staff th,#staff td{
+	width:130px;
+}
