@@ -14,12 +14,16 @@ function getAllTables() {
 }
 
 function makeAllTablesSortable(tables) {
-	var thArray = document.getElementsByTagName("th");
-	 for (var count = 0; count < thArray.length; count++) {
-		 thArray[count].onclick = function s() {
-			 sortBy(this, tables);
-		 };
-	 }
+	var thArray = new Array();
+	
+	// find all the head of tables and register their onclick event
+	for (var count = 0; count < tables.length; count++) {
+		for (var temp = 0; temp < tables[count].rows[0].cells.length; temp++) {
+			tables[count].rows[0].cells[temp].onclick = function () {
+			    sortBy(this, tables);
+		    }
+		}
+	}
 }
 
   // sort the table by the given thead of colume: target
@@ -29,7 +33,8 @@ function sortBy(target, tables) {
 	for (var count = 0; count < tables.length; count++) {
 		for (var temp = 0; temp < tables[count].cells.length; temp++) {
 			if (target == tables[count].cells[temp]) {
-				sortTable(tables[count], temp)
+				sortTable(tables[count], temp);
+				break;
 			}
 		}
 	}
@@ -38,18 +43,15 @@ function sortBy(target, tables) {
   // the main function that sort the table, colume is the colume of the table that being selected
 function sortTable(target, colume)
 {
-  // get the tr child of the table
-  var trChild = target.childNodes[1].childNodes[1];
   
   // set initial backgroundColor of all heads of the table
-  // the color should be changed only when it was selected
-  for (var count = 0; count * 2 + 1 < trChild.childNodes.length; count++) {
-	  var tempChild = trChild.childNodes[count * 2 + 1];
-	  tempChild.style.backgroundColor = "#000077";
+  // because the color should be changed only when it was selected
+  for (var count = 0; count < target.rows[0].cells.length; count++) {
+	  target.rows[0].cells[count].style.backgroundColor = "#000077";
   }
   
   // get the th child which is selected
-  var targetChild = trChild.childNodes[colume * 2 + 1];
+  var targetChild = target.rows[0].cells[colume];
   // change the backgroundColor of selected th to shallow blue
   targetChild.style.backgroundColor = "#AAAAFF";
   
