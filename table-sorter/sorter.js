@@ -5,7 +5,7 @@
  * Description: The javascript to make the table sortable
  */
 
-var flag = true;
+var hasPicture = true;
 
 window.onload = function() {
   var tables = getAllTables();
@@ -38,15 +38,23 @@ function makeTableSortable(table) {
 function addEventToTableHead(column, tableHeads, table) {
   var columnCount = tableHeads.length;
   tableHeads[column].addEventListener('click', function() {
-    sortTableByColumn(column, columnCount, table);
+    if (tableHeads[column].id === '' || tableHeads[column].id === 'descend') {
+      tableHeads[column].id = 'ascend';
+    } else {
+      tableHeads[column].id = 'descend';
+    }
+    var sortType = tableHeads[column].id;
+    sortTableByColumn(column, columnCount, table, sortType);
+    if (hasPicture !== undefined && hasPicture) {
+      changeTableHeadStyle(column, tableHeads, sortType);
+    }
   });
   tableHeads[column].style.cursor = 'pointer';
 }
 
-function sortTableByColumn(column, columnCount, table) {
+function sortTableByColumn(column, columnCount, table, sortType) {
   var tableDataList = getDataFromTable(columnCount, table);
-  sortTable(column, columnCount, tableDataList);
-  flag = !flag;
+  sortTable(column, columnCount, tableDataList, sortType);
 }
 
 function getDataFromTable(columnCount, table) {
@@ -64,11 +72,11 @@ function getDataFromTable(columnCount, table) {
   return dataList;
 }
 
-function sortTable(column, columnCount, tableDataList) {
+function sortTable(column, columnCount, tableDataList, sortType) {
   for (var i = 0; i < tableDataList.length - 1; i++) {
     for (var j = i + 1; j < tableDataList.length; j++) {
       var swapFlag = tableDataList[i][column].innerHTML > tableDataList[j][column].innerHTML;
-      if (!flag) {
+      if (sortType === 'descend') {
         swapFlag = !swapFlag;
       }
       if (swapFlag) {
@@ -83,5 +91,32 @@ function swapRow(row1, row2, columnCount) {
     var temp = row1[i].innerHTML;
     row1[i].innerHTML = row2[i].innerHTML;
     row2[i].innerHTML = temp;
+  }
+}
+
+function changeTableHeadStyle(column, tableHeads, sortType) {
+  initializeTableHeadStyle(tableHeads, column);
+  tableHeads[column].style.backgroundColor = 'rgba(165,175,255,1)';
+  tableHeads[column].style.paddingRight = '0';
+  var image = document.createElement('img');
+  image.style.float = 'right';
+  image.style.marginRight = '4px';
+  image.style.marginLeft = '4px';
+  image.src = sortType + '.png';
+  image.id = 'sort-type';
+  tableHeads[column].appendChild(image);
+}
+
+function initializeTableHeadStyle(tableHeads, column) {
+  for (var i = 0; i < tableHeads.length; i++) {
+    var images = tableHeads[i].getElementsByTagName('img');
+    for (var j = 0; j < images.length; j++) {
+      tableHeads[i].removeChild(images[j]);
+    }
+    tableHeads[i].style.paddingRight = '24px';
+    tableHeads[i].style.backgroundColor = 'rgba(3,3,128,1)';
+    if (column !== i) {
+      tableHeads[i].id = '';
+    }
   }
 }

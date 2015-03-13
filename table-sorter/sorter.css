@@ -1,15 +1,22 @@
 body {
-    padding: 0;
-    margin: 0;
+    padding-left: 10px;
 }
 
 table {
     border-collapse: collapse;
     border-spacing: 0;
+    font-family: "Helvetica", "Arial", sans-serif;
 }
 
 th, td {
     border: 1px solid #aaaaaa;
+    padding-left: 4px;
+    padding-right: 4px;
+    text-align: left;
+}
+
+th {
+    padding-right: 24px;
 }
 
 thead tr {
