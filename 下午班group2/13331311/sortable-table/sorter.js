@@ -32,10 +32,9 @@ function makeTableSortable(table) {
 						var value1 = a.cells[index].textContent;
 	                    var value2 = b.cells[index].textContent;
 	                    if (isNaN(value1))
+	                   		return value1.localeCompare(value2);
+	                   	else
 	                   		return value1 - value2;
-	                   	else {
-	                   		return value1 - value2;
-	                   	}
 					}
 				);
 
@@ -46,7 +45,7 @@ function makeTableSortable(table) {
 
 			} else {
 	        	myRows.reverse();
-
+	        	
 	        	if (this.className == "AscendTh")
 	        		this.className = "DescendTh";
 	        	else
