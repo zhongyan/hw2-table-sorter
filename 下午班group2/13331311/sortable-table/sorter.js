@@ -46,7 +46,7 @@ function makeTableSortable(table) {
 
 			} else {
 	        	myRows.reverse();
-
+	        	
 	        	if (this.className == "AscendTh")
 	        		this.className = "DescendTh";
 	        	else
