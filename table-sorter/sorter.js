@@ -4,11 +4,40 @@
   laterly written on 2015-3-13
 */
 
+window.onload = function () {
+	var tables = getAllTables();
+	makeAllTablesSortable(tables);
+};
+
+function getAllTables() {
+	return document.getElementsByTagName("table");
+}
+
+function makeAllTablesSortable(tables) {
+	var thArray = document.getElementsByTagName("th");
+	 for (var count = 0; count < thArray.length; count++) {
+		 thArray[count].onclick = function s() {
+			 sortBy(this, tables);
+		 };
+	 }
+}
+
+  // sort the table by the given thead of colume: target
+function sortBy(target, tables) {
+	
+	// find the table that hold target
+	for (var count = 0; count < tables.length; count++) {
+		for (var temp = 0; temp < tables[count].cells.length; temp++) {
+			if (target == tables[count].cells[temp]) {
+				sortTable(tables[count], temp)
+			}
+		}
+	}
+}
+
   // the main function that sort the table, colume is the colume of the table that being selected
-function sortTable(objID, colume)
+function sortTable(target, colume)
 {
-  var target = document.getElementById(objID);
-  
   // get the tr child of the table
   var trChild = target.childNodes[1].childNodes[1];
   
