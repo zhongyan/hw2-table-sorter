@@ -146,16 +146,16 @@ getAllTables.prototype.selectSort = function(table, offset, way){
   If you use it as a loading js,
   please use the following sentence
 */
-// window.onload=function(){
+window.onload=function(){
 	
-// 	var table = new getAllTables();
-// 	table.makeAllTablesSortable();
+	var table = new getAllTables();
+	table.makeAllTablesSortable();
 
-// }
+}
 
 /*
   if you want to test it in the console, 
   please use the following sentence
 */
-var table = new getAllTables();
-table.makeAllTablesSortable();
+// var table = new getAllTables();
+// table.makeAllTablesSortable();
