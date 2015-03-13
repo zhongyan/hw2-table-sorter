@@ -1,0 +1,28 @@
+th {
+	background-color: rgb(2, 26, 126);
+	color: white;
+	text-align: left;
+	padding-right: 16px;  /*for the picture*/
+}
+
+th:hover, th.ascend, th.descend {
+	background-color: rgb(164, 176, 252);
+}
+
+th.ascend, th.descend {
+	background-position: right;
+	background-repeat: no-repeat;
+}
+
+th.ascend {
+	background-image: url("ascend.png");
+}
+
+th.descend {
+	background-image: url("descend.png");
+}
+
+/*tbody > tr:nth-child(even)*/
+tr.alternate > td {
+	background-color: rgb(221, 221, 221);
+}
