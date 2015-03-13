@@ -116,8 +116,8 @@ function initializeTableHeadStyle(tableHeads, column) {
         tableHeads[i].style.paddingRight = '24px';
         tableHeads[i].style.backgroundColor = 'rgba(3,3,128,1)';
         // Clear the status of the last click event of another column
-        // if (column !== i) {
-        //   tableHeads[i].id = '';
-        // }
+        if (column !== i) {
+          tableHeads[i].id = '';
+        }
     }
 }
