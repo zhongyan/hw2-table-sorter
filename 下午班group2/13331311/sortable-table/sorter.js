@@ -33,9 +33,8 @@ function makeTableSortable(table) {
 	                    var value2 = b.cells[index].textContent;
 	                    if (isNaN(value1))
 	                   		return value1.localeCompare(value2);
-	                   	else {
+	                   	else
 	                   		return value1 - value2;
-	                   	}
 					}
 				);
 
