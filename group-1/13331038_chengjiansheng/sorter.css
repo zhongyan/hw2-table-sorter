@@ -34,12 +34,12 @@ tbody tr:nth-child(even) {
     background-color: #ddd;
 }
 
-th.descend, th.ascend {
+th.arrowDown, th.arrowUp {
     background-color: #a6aefc;
 }
 
-th.descend:after,
-th.ascend:after {
+th.arrowDown:after,
+th.arrowUp:after {
     position: absolute;
     top: 0;
     right: 5px;
@@ -51,14 +51,13 @@ th.ascend:after {
 
     background-repeat: no-repeat;
     background-position: center;
-    -webkit-background-size: 20px;
-            background-size: 20px;
+    background-size: 20px;
 }
 
-th.descend:after {
+th.arrowDown:after {
     background-image: url(descend.png);
 }
 
-th.ascend:after {
+th.arrowUp:after {
     background-image: url(ascend.png);
 }
