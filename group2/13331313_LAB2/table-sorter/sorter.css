@@ -1,0 +1,28 @@
+table {    border-collapse: collapse;}
+
+table, th, td {
+	border: 1px solid #B0B9FC;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#staff th {    
+	padding-right: 30px;
+}
+
+thead tr {
+	background-color: #031B7D;
+
+	color: #F8FFFF;
+	text-align: left;
+}
+
+tr {    background-color: white;}
+
+.alternate {    background-color: #DDDDDD;}
+
+th {
+	background-position: right;
+	background-repeat:no-repeat;
+	cursor: pointer;
+}
