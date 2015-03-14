@@ -32,8 +32,9 @@ function getAllTables(){
 //add addSortObject as a prototype method for table object
 function makeAllTablesSortable(allTables){
 	if (this.continue)
-		for (var i = 0; i < this.originalTable.length; i++) {
-			with(this.originalTable[i]){
+		var i, j;
+		for (i = 0; i < allTables.length; i++) {
+			with(allTables[i]){
 				this.originalThead = getElementsByTagName('th');
 				var thLength = this.originalThead.length;
 				for (var j = 0; j < thLength; j++) {
@@ -41,30 +42,34 @@ function makeAllTablesSortable(allTables){
 					this.originalThead[j].setAttribute('data-sort','descend');
 					//Attach click to 'th'
 					this.originalThead[j].onclick = function(){
-						var table = this;
-						var offset = this.getAttribute('data-num');
-						//To find its parents 'table'
-						while(table.parentNode.tagName != 'BODY') {
-							table = table.parentNode;
-							if (table.tagName == 'TABLE') break;
-						}					
-			
-						//descend
-						if (this.getAttribute('data-sort') == 'descend') {
-							this.setAttribute('data-sort', 'ascend');
-							this.style.backgroundImage = 'url(ascend.png)';
-							selectSort(table, offset, true);
-						}
-						//ascend
-						else {
-							this.setAttribute('data-sort', 'descend');
-							this.style.backgroundImage = 'url(descend.png)';
-							selectSort(table, offset, false);
-						}					
+						addListener(this);
 					}
 				}			
 			}
 		}	
+}
+
+function addListener(target){
+	var table = target;
+	var offset = target.getAttribute('data-num');
+	//To find its parents 'table'
+	while(table.parentNode.tagName != 'BODY') {
+		table = table.parentNode;
+		if (table.tagName == 'TABLE') break;
+	}					
+		
+	//descend
+	if (target.getAttribute('data-sort') == 'descend') {
+		target.setAttribute('data-sort', 'ascend');
+		target.style.backgroundImage = 'url(ascend.png)';
+		selectSort(table, offset, true);
+	}
+	//ascend
+	else {
+		target.setAttribute('data-sort', 'descend');
+		target.style.backgroundImage = 'url(descend.png)';
+		selectSort(table, offset, false);
+	}	
 }
 
 //add selectSort as a prototype method for table object
