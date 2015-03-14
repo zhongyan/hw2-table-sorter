@@ -55,13 +55,11 @@
         constructor: TableSorter,
 
         init: function() {
-            Util.addClass(this.options.table, 'ysses');
             this.tbody = this.options.table.tBodies[0];
-            Util.addClass(this.tbody, 'ysseds');
             this.tr = this.options.table.tBodies[0].rows;
             this.ths = this.options.table.tHead.rows[0].cells;
-            this.compareFunc = this.compareFunc || this.options.compareFunc;
             this.trs = Array.prototype.slice.call(this.tr, 0);
+            this.compareFunc = this.compareFunc || this.options.compareFunc;
             this.listen();
         },
 
