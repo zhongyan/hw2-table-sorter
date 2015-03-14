@@ -83,7 +83,7 @@
                     } else if (Util.hasClass(this, self.options.descendClass)) {
                         self.reset(self.ths);
                     } else {
-                        self.reset(self.ths).sort(idx, 'asc');;
+                        self.reset(self.ths).sort(idx, 'asc');
                         Util.addClass(this, self.options.ascendClass);
                     }
                 };
