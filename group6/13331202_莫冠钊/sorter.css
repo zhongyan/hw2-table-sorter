@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Microsoft YaHei";
+  padding-left: 20px;
+  padding-top: 10px;
+}
+h2 {
+  margin-top: 20px;
+}
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th {
+  color: white;
+  cursor: pointer;
+  background-color: #141F93;
+  text-align: left;
+}
+th, td {
+  border: solid 1px #B6A9A9;
+  padding: 3px 15px 3px 3px;
+}
+tr:nth-child(even) {
+  background-color: #D4D4D4;
+}
+
+.ascend {
+  background: url(ascend.png) no-repeat #CFD5F4 right;
+}
+.descend {
+  background: url(descend.png) no-repeat #CFD5F4 right;
+}
