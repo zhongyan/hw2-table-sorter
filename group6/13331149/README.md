@@ -1,4 +1,5 @@
 实现了表格排序的功能，并且实现在makeAllTablesSortable函数里，理论上可在控制台中执行makeAllTablesSortable方法，将tables变得sortable，适合以下网址的表格
+
 http://www.w3school.com.cn/tags/html_ref_charactersets.asp
 
 http://www.w3school.com.cn/tags/html_ref_ascii.asp
