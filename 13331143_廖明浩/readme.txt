@@ -1,6 +1,0 @@
-
-http://soj.sysu.edu.cn/courses.php
-
-http://www.w3cschool.cc/html/html-tables.html
-
-http://www.theguardian.com/football/tables
