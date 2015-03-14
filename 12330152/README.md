@@ -1,0 +1,11 @@
+- 交互说明
+    - 点击表头项即可按该列升序排序, 再次点击则reverse
+- 在第三方网页中使用
+    - 适用范围(对满足以下条件的\<table\>有效)
+        - 是否分为\<thead\>和\<tbody\>不影响
+        - 第一个\<tr\>为header(只含有\<th\>)
+    - 使用说明(在其他网页中使用)
+        - 调用接口与作业要求一致(getAllTables & makeAllTablesSortable)
+        - 网页载入完毕后, 用console载入sorter.js中的内容, 按接口调用即可
+    - example(s)
+        - url: http://www.w3school.com.cn/cssref/index.asp#border
