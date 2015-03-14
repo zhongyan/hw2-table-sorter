@@ -1,0 +1,42 @@
+* {
+  background-color:white;
+  margin:0;
+  padding:0;
+}
+
+table {
+  border-collapse:collapse;
+}
+
+
+table,td,th {
+  border:1px;
+  border-style:solid;
+  border-color:black;
+}
+
+h1, h2, table {
+  margin-top:15px;
+  margin-left:5px;
+}
+
+
+td,th {
+  text-align:left;
+  padding-right:15px;
+  padding-left:2px;
+}
+
+th {
+  color:white;
+  background-color:rgb(3,27,125);
+}
+
+.alternate td{
+
+  background-color:rgb(221,221,221);
+}
+
+.rightdivimg {
+  float:right;
+}
