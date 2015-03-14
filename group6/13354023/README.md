@@ -1,11 +1,8 @@
 # Table Sorter
-
 **Sorry for the delay**
 **Git Rookie**
-
 ---
 适配网页url:
-
 * http://www.cnrencai.com/kaoshi/news/148148.html
 * http://www.w3school.com.cn/tags/html_ref_ascii.asp
 * http://gaokao.chsi.com.cn/zsgs/bssnlqmd.do?method=listStu&year=2014&yxdm=11846
