@@ -1,0 +1,25 @@
+body {
+	font-family: "Microsoft YaHei" !important;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+th {
+	color: white;
+	background-color: #000088;
+	text-align: left;
+	border: 1px solid #B8B8B8;
+	padding: 4px;
+	padding-right: 1em;
+}
+
+td {
+	border: 1px solid #B8B8B8;
+	padding: 4px;
+}
+
+tr.alternate {
+	background-color: #E0E0E0;
+}
