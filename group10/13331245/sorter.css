@@ -1,0 +1,29 @@
+table
+  {
+  border-collapse:collapse;
+  }
+
+table, th, td
+  {
+  border: 1px solid black;
+  }
+  
+  td, th
+  {
+  padding: 5px;
+  text-align: left;
+  }
+
+  th {
+    padding-right: 20px;
+    background-color: blue;
+  }
+  .alternate {
+    background-color: gray;
+  }
+  .ascend {
+    background: #6495ED url(ascend.png) no-repeat center right;
+  }
+  .descend {
+    background: #6495ED url(descend.png) no-repeat center right;
+  }
