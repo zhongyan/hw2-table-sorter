@@ -1,4 +1,3 @@
-可排序表格：
 http://www.w3schools.com/html/html_tables.asp
 http://www.w3cschool.cc/html/html-tables.html
 http://www.cplusplus.com/reference/ciso646/
