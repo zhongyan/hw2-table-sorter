@@ -1,0 +1,38 @@
+/*
+  ekuri wrote this sorter.css on 2015-3-11
+  this css try to control the style of a table
+  laterly written on 2015-3-12
+*/
+
+table {
+	border:solid 1px;
+	border-collapse:collapse;
+}
+
+table td {
+	border:solid 1px;
+	text-align:left;
+	width:200px;
+}
+
+table th {
+	border:solid 1px;
+	background-color:#000077;
+	color:white;
+	text-align:left;
+}
+
+table th:hover {
+	background-color:#0000FF;
+}
+
+
+table th:active {
+	background-position:right top;
+	background-repeat:no-repeat;
+}
+
+
+.alternate {
+	background-color:#CCCCCC;
+}
