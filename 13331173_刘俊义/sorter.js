@@ -1,97 +1,129 @@
-window.onload = function () {
-    var todo = document.getElementById('todo');
-    var staff = document.getElementById('staff');
-    k = 0;
-    sortCol = -1;
-    todo_thead = todo.tHead.rows[0];
-    staff_thead = staff.tHead.rows[0];
+window.onload = function() {
+    var tables = getAllTables();
+    makeAllTablesSortable(tables);
+}
 
-    todo.tBodies[0].rows[1].style.backgroundColor = 'lightgray';
-    staff.tBodies[0].rows[1].style.backgroundColor = 'lightgray';
-
-    todo_thead.cells[0].onclick = sort('todo', 0);
-    todo_thead.cells[1].onclick = sort('todo', 1);
-    todo_thead.cells[2].onclick = sort('todo', 2);
-
-    staff_thead.cells[0].onclick = sort('staff', 0);
-    staff_thead.cells[1].onclick = sort('staff', 1);
-    staff_thead.cells[2].onclick = sort('staff', 2);
+function getAllTables() {
+    var table_arr = document.getElementsByTagName("table");
+    return table_arr;
 }
 
 
-function sort (tableId, iCol) {
-	return function () {
-		this.parentNode.cells[0].style.backgroundImage = "";
-		this.parentNode.cells[1].style.backgroundImage = "";
-		this.parentNode.cells[2].style.backgroundImage = "";
+function makeAllTablesSortable(tables) {
+    for (var i = 0; i < tables.length; i++) {
+        var body = tables[i];
+        k = 0;
+        sortCol = -1;
 
-		var sortTable = document.getElementById(tableId);
-		var sortBody = sortTable.tBodies[0];
-		var rows = sortBody.rows;  // 引用
-		var arr = new Array();
 
-		for (var i = 0; i < rows.length; i++) {
-			arr.push(rows[i]);
-		};
+        if (body.tHead != null) {
+            for (var j = 1; j < body.tBodies[0].rows.length; j = j + 2) {
+                body.tBodies[0].rows[j].style.backgroundColor = 'lightgray';
+            };
+        } else {
+            for (var j = 2; j < body.tBodies[0].rows.length; j = j + 2) {
+                body.tBodies[0].rows[j].style.backgroundColor = 'lightgray';
+            };
+        }
 
-		if (sortCol == iCol) {
-			arr.reverse();
-		} else {
-			if (k%2 == 0) {// 升序
-				arr.sort(Compare(iCol));
-			} else { 
-				arr.sort(Compare1(iCol));
-			}
-		}
-
-		k++;
-		if (k%2 == 0) {
-			this.style.backgroundImage = "url(ascend.png)";
-		} else {
-			this.style.backgroundImage = "url(descend.png)";
-		}
-
-		var oFragment = document.createDocumentFragment();// 创建文档碎片
-		for (var i = 0; i < arr.length; i++) {
-			oFragment.appendChild(arr[i]);
-		};
-		sortBody.appendChild(oFragment); // 原来有影响像吗？
-		sortCol = iCol;
-
-		sortBody.rows[0].style.backgroundColor = '';
-		sortBody.rows[1].style.backgroundColor = 'lightgray';
-		sortBody.rows[2].style.backgroundColor = '';
-	}
+        for (var m = 0; m < body.getElementsByTagName('th').length; m++) {
+            body.getElementsByTagName('th')[m].onclick = sort(body, m)
+        };
+    };
 }
 
-function Compare (iCol) {
-	return function CompareTRs (oTR1, oTR2) {
-		var value1 = convert(oTR1.cells[iCol].firstChild.nodeValue);
-		var value2 = convert(oTR2.cells[iCol].firstChild.nodeValue);
-		if (value1 < value2) {
-			return -1;
-		} else if (value1 > value2) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
+
+function sort(table_, iCol) {
+    return function() {
+        var sortTable = table_;
+        for (var j = 0; j < sortTable.tBodies[0].rows.length; j++) {
+            sortTable.tBodies[0].rows[j].style.backgroundColor = 'white';
+        };
+
+        for (var i = 0; i < this.parentNode.cells.length; i++) {
+            this.parentNode.cells[i].style.backgroundImage = "";
+        };
+
+
+        var sortBody = sortTable.tBodies[0];
+        var rows = sortBody.rows; // 引用
+        var arr = new Array();
+
+        if (sortTable.tHead != null) {
+            for (var i = 0; i < rows.length; i++) {
+                arr.push(rows[i]);
+            };
+        } else {
+            for (var i = 1; i < rows.length; i++) {
+                arr.push(rows[i]);
+            };
+        }
+
+
+        if (sortCol == iCol) {
+            arr.reverse();
+        } else {
+            if (k % 2 == 0) { // 升序
+                arr.sort(Compare(iCol));
+            } else {
+                arr.sort(Compare1(iCol));
+            }
+        }
+
+        k++;
+        if (k % 2 == 1) {
+            this.style.backgroundImage = "url(ascend.png)";
+        } else {
+            this.style.backgroundImage = "url(descend.png)";
+        }
+
+        var oFragment = document.createDocumentFragment(); // 创建文档碎片
+        for (var i = 0; i < arr.length; i++) {
+            oFragment.appendChild(arr[i]);
+        };
+        sortBody.appendChild(oFragment); // ************
+        sortCol = iCol;
+
+        if (sortTable.tHead != null) {
+            for (var j = 1; j < sortTable.tBodies[0].rows.length; j = j + 2) {
+                sortTable.tBodies[0].rows[j].style.backgroundColor = 'lightgray';
+            };
+        } else {
+            for (var n = 2; n < sortTable.tBodies[0].rows.length; n = n + 2) {
+                sortTable.tBodies[0].rows[n].style.backgroundColor = 'lightgray';
+            };
+        }
+    }
 }
 
-function Compare1 (iCol) {
-	return function CompareTRs (oTR1, oTR2) {
-		var value1 = convert(oTR1.cells[iCol].firstChild.nodeValue);
-		var value2 = convert(oTR2.cells[iCol].firstChild.nodeValue);
-		if (value1 > value2) {
-			return -1;
-		} else if (value1 < value2) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
+function Compare(iCol) {
+    return function CompareTRs(oTR1, oTR2) {
+        var value1 = convert(oTR1.cells[iCol].firstChild.nodeValue);
+        var value2 = convert(oTR2.cells[iCol].firstChild.nodeValue);
+        if (value1 < value2) {
+            return -1;
+        } else if (value1 > value2) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }
 
-function convert (value) {
-	return value.toString();
+function Compare1(iCol) {
+    return function CompareTRs(oTR1, oTR2) {
+        var value1 = convert(oTR1.cells[iCol].firstChild.nodeValue);
+        var value2 = convert(oTR2.cells[iCol].firstChild.nodeValue);
+        if (value1 > value2) {
+            return -1;
+        } else if (value1 < value2) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+}
+
+function convert(value) {
+    return value.toString();
 }
