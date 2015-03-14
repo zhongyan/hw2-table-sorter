@@ -1,0 +1,54 @@
+table
+{
+	border-collapse: collapse;
+}
+
+table ,th, td
+{
+	border: 1px solid #d9d6c3;
+	text-align: left;
+}
+
+th
+{
+	background-position: right;
+	/*background-image: url('ascend.png');*/
+	background-repeat: no-repeat;
+}
+
+th:link, th:visited
+{
+	background-image:filter:alpha(opacity = 0);
+}
+th:hover, th:active
+{
+	background-image:filter:alpha(opacity = 100);
+}
+
+thead
+{
+	background-color: #2a5caa;
+	color: white;
+	font-weight: bolder;
+}
+
+td
+{
+	font-weight: bold;
+	font-size: 100%;
+}
+tr.alternate
+{
+	background-color: #d9d6c3;
+}
+
+thead th:hover
+{
+	background-color: #4e72b8;
+	cursor: pointer;
+}
+table#staff
+{
+	width: 60%;
+}
+
