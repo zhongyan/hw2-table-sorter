@@ -70,9 +70,11 @@ function sort_table(table_num, col, is_ascend, trs_num) {
 
 /*判断是否需要改变位置*/
 function judge(a, b, is_ascend) {
+
 	/*先把该标签的HTML空格去除，以便下面正则表达式检查数字(sicily上的HTML某些数字左右是有空格的)*/
 	var a_rm_white = a.innerHTML.replace(/(^\s+)|(\s+$)/g,"").replace(/\s/g,"");
 	var b_rm_white = b.innerHTML.replace(/(^\s+)|(\s+$)/g,"").replace(/\s/g,"");
+
 	/*用正则表达式来判断是否为数字(包括正负整数或浮点数)*/
 	var re = /^(-?\d+)(\.\d+)?$/;
 	if (re.test(a_rm_white)&&re.test(b_rm_white)) {
