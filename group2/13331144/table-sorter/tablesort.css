@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	text-align: left;
+}
+
+thead > tr {
+    color: #fff;
+    background-color: #021c7d;
+}
+
+th.descend:after {
+    background-image: url(descend.png);
+}
+
+th.ascend:after {
+    background-image: url(ascend.png);
+}

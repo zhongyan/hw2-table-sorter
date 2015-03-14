@@ -1,0 +1,52 @@
+body {
+	font-family: Arial, sans-serif;
+	font-weight: bolder;
+}
+
+table {
+	border-right:1px solid #C0C0C2;
+	border-bottom:1px solid #C0C0C2;
+	border-collapse: collapse;
+}
+
+#todo {
+	width: 440px;
+}
+
+#staff {
+	width: 350px;
+}
+
+.alternate {
+	background-color: #DDDDDC;
+}
+
+.ascend {
+	background-color: #A4ACFB;
+	background-image: url(ascend.png);
+	background-position: center right;
+	background-repeat: no-repeat;
+}
+
+.descend {
+	background-color: #A4ACFB;
+	background-image: url(descend.png);
+	background-position: center right;
+	background-repeat: no-repeat;
+}
+
+table td {
+	border-left:1px solid #C0C0C2;
+	border-top:1px solid #C0C0C2;
+	padding: 4px;
+}
+
+table th {
+	border-left:1px solid #C0C0C2;
+	border-top:1px solid #C0C0C2;
+	text-align: left;
+	color: white;
+	background-color: #021C7A;
+	padding: 4px;
+	cursor: pointer;
+}
