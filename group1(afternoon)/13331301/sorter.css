@@ -1,0 +1,34 @@
+#todo > thead > tr > th {
+	background-color: rgb(2,27,127);
+	text-align: left;
+	font: bold;
+	color: white;
+}
+#todo {
+	border-collapse: collapse;
+}
+#todo > thead > tr > th {
+	border: 1px solid white;
+}
+#todo > tbody > tr > td {
+	border: 1px solid rgb(194,194,194);
+}
+#staff > thead > tr > th {
+	background-color: rgb(2,27,127);
+	text-align: left;
+	font: bold;
+	color: white;
+}
+#staff {
+	border-collapse: collapse;
+}
+#staff > thead > tr > th {
+	border: 1px solid white;
+}
+#staff > tbody > tr > td {
+	border: 1px solid rgb(194,194,194);
+}
+.alternate td {
+	background-color: rgb(221, 221, 221);
+}
+
