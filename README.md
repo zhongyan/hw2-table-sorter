@@ -1,3 +1,3 @@
 # table-sorter
 
-[table-sorter](http://my.ss.sysu.edu.cn/wiki/display/SPSP/Lab+02.+Table+Sorter)
+[sortable-url](http://www.w3cschool.cn/tag_table.html)
