@@ -22,7 +22,7 @@ th {
 	padding-right: 30px;
 	cursor: pointer;
 	-moz-user-select: none;
-	--webkit-user-select: none;
+	-webkit-user-select: none;
 }
 
 .alternate {

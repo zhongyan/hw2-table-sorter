@@ -19,7 +19,7 @@ function makeAllTableSortable(tables){
         var heads = tables[i].getElementsByTagName("tr")[0].children;
         for (var j = 0; j < heads.length; j++) {
             heads[j].classList.add("unsort");
-            
+
             // add mySort event to all heads in the table head
             heads[j].addEventListener("click", mySort);
         }

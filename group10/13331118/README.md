@@ -1,8 +1,12 @@
-mwc_hw2
-=======
+#13331118 李俊杰
 
-[table sorter](http://my.ss.sysu.edu.cn/wiki/display/MWC/Homewrok+02.+Table+Sorter)
+[table sorter作业网站](http://my.ss.sysu.edu.cn/wiki/display/MWC/Homewrok+02.+Table+Sorter)
 
-urls of which tables can be sorted:
-http://www.soj.me/ranklist.php
-http://eden.sysu.edu.cn:8080/m/ass/
+##可用于以下网站:
+使用方法：sorter.js的第10行~结尾复制输入到console,再把6,7行复制输入到console
+
+1.[Sicily](http://soj.sysu.edu.cn/ranklist.php)
+2.[Eden](http://eden.sysu.edu.cn:8080/m/ass/)
+3.[purecss](http://purecss.io/tables/)
+4.[amazeui](http://amazeui.org/css/table)
+5.[semantic-ui](http://semantic-ui.com/collections/table.html)
