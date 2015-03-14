@@ -7,7 +7,11 @@ function makeAllTablesSortable(tables) {
 	for(var i = 0; i < tables.length; i++) {
 		this_table = tables[i];
         label[i] = this_table.getElementsByTagName("th");
+        indexColor = this_table.getElementsByTagName("tr");
 		for(var j = 0; j < label[i].length; j++) {
+            if(j % 2 == 0) {
+                indexColor[j].style.backgroundColor = "gray";
+            }
             label[i][j].isclick = false;
 			label[i][j].sorted = true;
             label[i][j].table_id = i;
