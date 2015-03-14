@@ -20,6 +20,7 @@
                 ele['on'+type] = handler;
             }
         },
+
         hasClass: function(ele, cl) {
             return ele.className.indexOf(cl) === -1 ? false : true;
         },
@@ -29,7 +30,7 @@
         },
 
         addClass: function(ele, cl) {
-            ele.className = this.hasClass(ele, cl) ? ele.className + ' ' + cl : cl;
+            ele.className = this.hasClass(ele, cl) ? cl : ele.className + ' ' + cl;
         }
     };
 
@@ -39,6 +40,7 @@
      * 
      * @param  options {Object} 相关配置
      * 
+     * @method  init 初始化函数，添加必要私有成员
      * @method  reset 去除表头添加的样式
      * @method  listen 为表头每一个单元格添加事件监听器
      * @method  sort 对tBody每一行排序
@@ -47,25 +49,28 @@
 
     var TableSorter = function(options) {
         this.options = options;
-        this.tbody = this.options.table.tBodies[0];
-        this.tr = this.options.table.tBodies[0].rows;
-        this.ths = this.options.table.tHead.rows[0].cells;
-        this.compareFunc = this.compareFunc || this.options.compareFunc;
-        this.trs = [];
-        for (var i = 0, len = this.tr.length; i < len; i++) {
-            this.trs.push(this.tr[i]);
-        }
-        this.listen();
     };
 
     TableSorter.prototype = {
         constructor: TableSorter,
+
+        init: function() {
+            Util.addClass(this.options.table, 'ysses');
+            this.tbody = this.options.table.tBodies[0];
+            Util.addClass(this.tbody, 'ysseds');
+            this.tr = this.options.table.tBodies[0].rows;
+            this.ths = this.options.table.tHead.rows[0].cells;
+            this.compareFunc = this.compareFunc || this.options.compareFunc;
+            this.trs = Array.prototype.slice.call(this.tr, 0);
+            this.listen();
+        },
 
         reset: function(arr) {
             for (var i = 0, len = arr.length; i < len; i++) {
                 Util.removeClass(arr[i], this.options.ascendClass);
                 Util.removeClass(arr[i], this.options.descendClass);
             }
+            return this;
         },
 
         listen: function() {
@@ -73,15 +78,13 @@
             var clickToSort = function(idx) {
                 return function() {
                     if (Util.hasClass(this, self.options.ascendClass)) {
-                        self.reset(self.ths);
+                        self.reset(self.ths).sort(idx, 'des');
                         Util.addClass(this, self.options.descendClass);
-                        self.sort(idx, 'des');
                     } else if (Util.hasClass(this, self.options.descendClass)) {
                         self.reset(self.ths);
                     } else {
-                        self.reset(self.ths);
+                        self.reset(self.ths).sort(idx, 'asc');;
                         Util.addClass(this, self.options.ascendClass);
-                        self.sort(idx, 'asc');
                     }
                 };
             };
@@ -92,9 +95,7 @@
         },
 
         sort: function(criteria, type) {
-            var rowCount = this.options.table.rows.length,
-                table = this.options.table,
-                newTbody = document.createElement('tbody');
+            var newTbody = document.createElement('tbody');
 
             if (type === 'asc') {
                 this.trs.sort(this.compareFunc(criteria));
@@ -102,12 +103,14 @@
                 this.trs.reverse();
             }
 
-            for (var i = 0, len = this.trs.length; i < len; i++) {
+            for (var i in this.trs) {
                 newTbody.appendChild(this.trs[i]);
             }
 
             this.options.table.replaceChild(newTbody, this.tbody);
             this.tbody = newTbody;
+
+            return this;
         },
 
         compareFunc: function(criteria) {
@@ -130,6 +133,7 @@
                 ascendClass: 'ascend',
                 descendClass: 'descend'
             });
+            tb.init();
         }
     };
 
